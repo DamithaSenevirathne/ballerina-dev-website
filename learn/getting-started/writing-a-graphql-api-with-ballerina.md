@@ -17,11 +17,11 @@ GraphQL service to serve a sample dataset related to Covid-19.
 This guide includes the following steps:
 
 1. Designing the GraphQL endpoint.
-2. Creating the Covid-19 dataset
+2. Creating the COVID-19 dataset
 3. Writing the GraphQL service to:
-    - Get all the Covid-19 data
-    - Filter Covid-19 data using the `isoCode`
-    - Add Covid-19 data
+    - Get all the COVID-19 data
+    - Filter COVID-19 data using the `isoCode`
+    - Add COVID-19 data
 
 ## Setting up the Prerequisites
 
@@ -76,7 +76,7 @@ This will create a new Ballerina project inside a directory named `covid19`.
 ## Creating a Datasource for the Project
 
 Before writing the GraphQL service, let's create a data source for the project. This will mimic a database that stores
-the data for the service. In this guide, you are going to use an in-memory table in Ballerina as the datasource.
+the data for the service. In this guide, you are going to use an in-memory table in Ballerina as the data source.
 
 ### Defining the Types for the Datasource
 
@@ -248,7 +248,7 @@ service /covid19 on new graphql:Listener(9000) {
 The resource method definition has the accessor `get`, which is used to identify the resource methods as a field of the
 `Query` type. No other accessor is allowed. Then, comes the name of the field. The return type is the type of the field.
 
-The above resource method first retrieves the array of `CovidEntry` records from the datasource as an array, then
+The above resource method first retrieves the array of `CovidEntry` records from the data source as an array, then
 returns an array of `CovidData` service type array as the result using the built-in `map` function.
 
 Similarly, we can define another resource method to add the `filter` field.
@@ -271,7 +271,7 @@ corresponding data for the given `isoCode`, if such data is available in our dat
 
 As the `Query` type is completed now, you need to define the `Mutation` type using remote methods.
 
-Let's define a remote method to add an entry to our datasource:
+Let's define a remote method to add an entry to our data source:
 
 ```ballerina
 remote function add(CovidEntry entry) returns CovidData {
@@ -367,7 +367,7 @@ service /covid19 on new graphql:Listener(9000) {
 }
 ```
 
-Now, you can run this service to serve a GraphQL API to our datasource. To run, execute the following command:
+Now, you can run this service to serve a GraphQL API to our data source. To run, execute the following command:
 
 ```shell
 bal run
